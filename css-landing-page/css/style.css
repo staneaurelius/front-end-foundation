@@ -8,19 +8,22 @@ body {
     align-items: center;
 }
 
-.header, h1, button{
+.header, h1, button {
     color: #F9FAF8;
 }
 
-a, .text {
+a, .text, .footer {
     color: #E5E7EB;
 }
 
-/* Home Styling */
-.home {
-    background-color: #1F2937;
+.home, .info, .quote, .register, .footer {
     box-sizing: border-box;
     width: 100%;
+}
+
+/* Home Section */
+.home {
+    background-color: #1F2937;
     margin: 0;
     padding: 24px 216px 128px;
 }
@@ -100,8 +103,6 @@ h2 {
 
 /* Quote Section */
 .quote {
-    box-sizing: border-box;
-    width: 100%;
     background-color: #E5E7EB;
     padding: 132px 356px 108px;
 }
@@ -117,8 +118,6 @@ em {
 
 /* Register Section */
 .register {
-    box-sizing: border-box;
-    width: 100%;
     padding: 100px 200px;
 }
 
@@ -141,4 +140,15 @@ em {
 
 .register button {
     border: 2px solid #E5E7EB;
+}
+
+/* Footer section */
+.footer {
+    background-color: #1F2937;
+    text-align: center;
+    padding: 36px 0;
+}
+
+.footer p {
+    font-size: 18px;
 }
