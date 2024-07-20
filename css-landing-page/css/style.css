@@ -8,7 +8,7 @@ body {
     align-items: center;
 }
 
-.header, .text h1, button{
+.header, h1, button{
     color: #F9FAF8;
 }
 
@@ -83,15 +83,35 @@ button {
 }
 
 /* Info section */
+h2, em {
+    color: #1F2937;
+}
 
 .info {
     padding: 54px 300px 120px;
     text-align: center;
 }
 
-.info h2 {
-    color: #1F2937;
+h2 {
     margin-bottom: 54px;
     font-size: 36px;
     font-weight: 800;
 }
+
+/* Quote Section */
+.quote {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #E5E7EB;
+    padding: 132px 356px 108px;
+}
+
+em {
+    font-size: 36px;
+    font-weight: 300;
+}
+
+#author {
+    text-align: end;
+}
+
