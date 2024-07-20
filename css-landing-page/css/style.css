@@ -8,6 +8,14 @@ body {
     align-items: center;
 }
 
+.header, .text h1, button{
+    color: #F9FAF8;
+}
+
+a, .text {
+    color: #E5E7EB;
+}
+
 /* Home Styling */
 .home {
     background-color: #1F2937;
@@ -25,7 +33,6 @@ body {
 }
 
 .header {
-    color: #F9FAF8;
     font-size: 24px;
     font-weight: 700;
 }
@@ -40,13 +47,11 @@ ul {
 
 a {
     text-decoration: none;
-    color: #E5E7EB;
 }
 
 
 /* Home Content */
 .container {
-    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,13 +59,11 @@ a {
 }
 
 .text {
-    color: #E5E7EB;
     font-size: 18px;
     flex: 1;
 }
 
 .text h1 {
-    color: #F9FAF8;
     font-size: 48px;
     font-weight: 800;
     margin-bottom: 18px;
@@ -72,10 +75,23 @@ img {
 
 button {
     background-color: #3882F6;
-    color: #F9FAF8;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     padding: 8px 32px;
     border: 0;
     border-radius: 8px;
+}
+
+/* Info section */
+
+.info {
+    padding: 54px 300px 120px;
+    text-align: center;
+}
+
+.info h2 {
+    color: #1F2937;
+    margin-bottom: 54px;
+    font-size: 36px;
+    font-weight: 800;
 }
