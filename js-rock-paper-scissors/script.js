@@ -1,3 +1,7 @@
+// Check if script is connected
+console.log('Hello World!');
+
+
 // Randomize computer choice
 function getComputerChoice() {
     const randomNumber = Math.random();
@@ -11,7 +15,7 @@ function getComputerChoice() {
         computerChoice = 'scissors';
     };
 
-    return computerChoice
+    return computerChoice;
 };
 
 
@@ -38,7 +42,56 @@ function getHumanChoice() {
     };
 
     return humanChoice;
-}
+};
 
 
 // Game scoring
+let humanScore = 0,
+    computerScore = 0;
+
+
+// Playing a round
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`Computer also choose ${computerChoice}, it's a draw!`);
+    } else {
+        switch (humanChoice) {
+            case 'rock':
+                if (computerChoice === 'paper') {
+                    computerScore++;
+                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                } else {
+                    humanScore++;
+                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                };
+                break;
+
+            case 'paper':
+                if (computerChoice === 'scissors') {
+                    computerScore++;
+                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                } else {
+                    humanScore++;
+                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                };
+                break;
+
+            case 'scissors':
+                if (computerChoice === 'rock') {
+                    computerScore++;
+                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                } else {
+                    humanScore++;
+                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                };
+                break;
+        };
+    };
+};
+
+
+// Final game
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
