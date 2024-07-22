@@ -1,5 +1,5 @@
 // Check if script is connected
-console.log('Hello World!');
+console.log('Welcome to Rock-Paper-Scissors: the Game!');
 
 
 // Randomize computer choice
@@ -45,53 +45,68 @@ function getHumanChoice() {
 };
 
 
-// Game scoring
-let humanScore = 0,
-    computerScore = 0;
-
-
 // Playing a round
 function playRound(humanChoice, computerChoice) {
+    let winner;
+
     if (humanChoice === computerChoice) {
+        winner = null;
         console.log(`Computer also choose ${computerChoice}, it's a draw!`);
     } else {
         switch (humanChoice) {
             case 'rock':
                 if (computerChoice === 'paper') {
-                    computerScore++;
+                    winner = 'computer';
                     console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 } else {
-                    humanScore++;
+                    winner = 'human';
                     console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 };
                 break;
 
             case 'paper':
                 if (computerChoice === 'scissors') {
-                    computerScore++;
+                    winner = 'computer';
                     console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 } else {
-                    humanScore++;
+                    winner = 'human';
                     console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 };
                 break;
 
             case 'scissors':
                 if (computerChoice === 'rock') {
-                    computerScore++;
+                    winner = 'computer';
                     console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 } else {
-                    humanScore++;
+                    winner = 'human';
                     console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 };
                 break;
         };
     };
+
+    return winner;
 };
 
 
 // Final game
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    let humanScore = 0,
+        computerScore = 0;
 
-playRound(humanSelection, computerSelection);
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        const winner = playRound(humanSelection, computerSelection);
+        
+        // Game scoring
+        if (winner) {
+            winner === 'human' ? humanScore++ : computerScore++;
+        };
+
+        console.log(`Current score:\n    Player: ${humanScore}\n    Computer: ${computerScore}`);
+    };
+};
+
+playGame();
