@@ -3,8 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors!</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <script src="./script.js"></script>
+        <script defer src="js/script.js"></script>
+        <!-- Heading -->
+        <h1><span class="rock">Rock</span> <span class="paper">Paper</span> <span class="scissors">Scissors</span></h1>
+        <p><span class="rock">Rock</span> crushes <span class="scissors">Scissors</span>  |  <span class="scissors">Scissors</span> cuts <span class="paper">Paper</span>  |  <span class="paper">Paper</span> covers <span class="rock">Rock</span></p>
+        <p>First to score 5 points wins the game!</p>
+        <img src="images/decorative-line.png" alt="decorative line" width="300px">
+
+        <!-- Scores -->
+        <div class="scores">
+            <p>Make your choice</p>
+            <div class="player-score">
+                <p>?</p>
+                <p>Player: 0</p>
+            </div>
+            <div class="computer-score">
+                <p>?</p>
+                <p>Computer: 0</p>
+            </div>
+        </div>
+
+        <!-- Choices -->
+        <div class="choices">
+            <button>rock</button>
+            <button>paper</button>
+            <button>scissors</button>
+        </div>
     </body>
 </html>
