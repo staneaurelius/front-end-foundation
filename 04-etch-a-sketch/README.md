@@ -1,4 +1,4 @@
-# Project: Rock Paper Scissors
+# Project: Etch-A-Sketch
 
 This project is part of **The Odin Project's** Foundational course. This project is meant for demonstrating the proficiency in HTML, CSS, and JavaScript by creating a web page for playing [Etch-A-Sketch](https://en.wikipedia.org/wiki/Etch_A_Sketch) drawing. This project requires an understanding of:
 
