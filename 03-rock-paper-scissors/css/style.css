@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Merienda:wght@300..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: "Merienda", "Allura", cursive;
+    color: #222;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* Heading styles */
+.rock {
+    color: #8685EF;
+}
+
+.paper {
+    color: #009063;
+}
+
+.scissors {
+    color: #C44F6F;
+}
+
+body > img {
+    object-fit: cover;
+    width: 50%;
+    height: 100px;
+}
+
+/* Scores */
+.scores {
+    display: flex;
+    justify-content: center;
+    gap: 96px;
+    margin: 16px 0 32px;
+}
+
+.scores p {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Choices */
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+button {
+    width: 12.5%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 32px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 32px;
+    border-top: 2px solid #919191;
+}
+
+.footer p {
+    font-family: Helvetica, Arial, sans-serif;
+    font-style: italic;
+}
