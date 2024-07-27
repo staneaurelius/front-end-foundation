@@ -39,7 +39,17 @@ function colorCells () {
     const squareCells = document.querySelectorAll('.cell');
     squareCells.forEach((squareCell) => {
         squareCell.addEventListener('mouseover', (e) => {
-            e.target.classList.add('active');
+            if (e.target.style.backgroundColor) {
+                // Increase opacity if cell is colored
+                e.target.style.opacity = `${parseFloat(e.target.style.opacity) + 0.1}`;
+            } else {
+                // Add random color otherwise
+                let redValue = Math.round(Math.random() * 255),
+                    greenValue = Math.round(Math.random() * 255),
+                    blueValue = Math.round(Math.random() * 255);
+                e.target.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+                e.target.style.opacity = "0.3";
+            };
         });
     });
 };
