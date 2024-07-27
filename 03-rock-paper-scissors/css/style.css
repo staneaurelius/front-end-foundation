@@ -44,6 +44,7 @@ body > img {
 .scores p {
     font-size: 24px;
     font-weight: 700;
+    margin-top: 8px;
 }
 
 /* Choices */
@@ -58,6 +59,10 @@ button {
     background-color: #fff;
     border-radius: 8px;
     padding: 32px;
+}
+
+img {
+    pointer-events: none;
 }
 
 /* Footer */

@@ -19,68 +19,35 @@ function getComputerChoice() {
 };
 
 
-// Prompt user to input hand signal
-function getHumanChoice() {
-    let humanChoice;
-    let validity = false;
-
-    while (!validity) {
-        humanChoice = prompt('What is your hand signal? (Rock / Paper / Scissors)').toLowerCase();
-        switch (humanChoice) {
-            case 'rock':
-                validity = true;
-                break;
-            case 'scissors':
-                validity = true;
-                break;
-            case 'paper':
-                validity = true;
-                break;
-            default:
-                console.log('Please enter a valid hand signal!');
-        };
-    };
-
-    return humanChoice;
-};
-
-
 // Playing a round
 function playRound(humanChoice, computerChoice) {
     let winner;
 
     if (humanChoice === computerChoice) {
         winner = null;
-        console.log(`Computer also choose ${computerChoice}, it's a draw!`);
     } else {
         switch (humanChoice) {
             case 'rock':
                 if (computerChoice === 'paper') {
                     winner = 'computer';
-                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 } else {
                     winner = 'human';
-                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 };
                 break;
 
             case 'paper':
                 if (computerChoice === 'scissors') {
                     winner = 'computer';
-                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 } else {
                     winner = 'human';
-                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 };
                 break;
 
             case 'scissors':
                 if (computerChoice === 'rock') {
                     winner = 'computer';
-                    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 } else {
                     winner = 'human';
-                    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 };
                 break;
         };
@@ -89,24 +56,79 @@ function playRound(humanChoice, computerChoice) {
     return winner;
 };
 
+// Play game using UI
+const playerStatus = document.querySelector('.player-status');
+const computerStatus = document.querySelector('.computer-status');
+const buttons = document.querySelectorAll('button')
 
-// Final game
-function playGame() {
-    let humanScore = 0,
-        computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        const winner = playRound(humanSelection, computerSelection);
-        
-        // Game scoring
-        if (winner) {
-            winner === 'human' ? humanScore++ : computerScore++;
-        };
-
-        console.log(`Current score:\n    Player: ${humanScore}\n    Computer: ${computerScore}`);
-    };
+function getPlayerChoice (buttonId) {
+    let playerChoice = document.createElement('img');
+    playerChoice.src = `images/${buttonId}.png`;
+    playerChoice.style.cssText = `
+        width: 96px;
+        height: 96px;
+    `;
+    return playerChoice;
 };
 
-// playGame();
+function changeComputerChoice (computerChoice) {
+    let computerImage = document.createElement('img');
+    computerImage.src = `images/${computerChoice}.png`;
+    computerImage.style.cssText = `
+        width: 96px;
+        height: 96px;
+    `;
+    return computerImage;
+}
+
+buttons.forEach((button) => {
+    button.addEventListener('click', function(e) {
+        // Change player choice to the selected hand sign
+        const playerChoice = e.target.id;
+        const playerImage = getPlayerChoice(playerChoice);
+        playerStatus.firstElementChild.replaceWith(playerImage);
+
+        // Change computer choice
+        const computerChoice = getComputerChoice();
+        const computerImage = changeComputerChoice(computerChoice);
+        computerStatus.firstElementChild.replaceWith(computerImage);
+
+        // Round scoring
+        const winner = playRound(playerChoice, computerChoice);
+        let currentPlayerScore = document.querySelector('#player-score');
+        let currentComputerScore = document.querySelector('#computer-score');
+
+        let roundConclusion = document.createElement('p');
+        roundConclusion.id = 'conclusion-text';
+        roundConclusion.style.marginBottom = '36px';
+
+        if (winner === 'human') {
+            currentPlayerScore.textContent++;
+            roundConclusion.innerHTML = `You win! <span class="${playerChoice}">${playerChoice}</span> beats <span class="${computerChoice}">${computerChoice}</span>`;
+        } else if (winner === 'computer') {
+            currentComputerScore.textContent++;
+            roundConclusion.innerHTML = `You lose! <span class="${computerChoice}">${computerChoice}</span> beats <span class="${playerChoice}">${playerChoice}</span>`;
+        } else {
+            roundConclusion.textContent = "It's a draw!";
+        };
+        
+        const conclusionText = document.querySelector('#conclusion-text')
+        conclusionText.replaceWith(roundConclusion);
+
+        // Final score
+        if (currentPlayerScore.textContent == 5 || currentComputerScore.textContent == 5) {
+            let gameConclusion;
+            if (currentPlayerScore.textContent > currentComputerScore.textContent) {
+                gameConclusion = 'Congratulations! You win the game!';
+            } else {
+                gameConclusion = 'You lost! Try again harder!';
+            };
+            alert(gameConclusion);
+
+            // Reset everything back
+            conclusionText.textContent = 'Make your choice';
+            currentPlayerScore.textContent = 0;
+            currentComputerScore.textContent = 0;
+        };
+    });
+});
