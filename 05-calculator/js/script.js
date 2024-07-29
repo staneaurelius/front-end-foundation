@@ -114,7 +114,24 @@ buttons.forEach((button) => {
                         };
                         afterEqual = true;
                         break;
-                }
+                    
+                    case 'percent':
+                        firstNumber = Number(displayedNumber.textContent);
+                        secondNumber = 100;
+                        equation.textContent = `${firstNumber}%`
+                        operationResult = operate(firstNumber, '÷', secondNumber);
+                        displayedNumber.textContent = operationResult;
+                        firstNumber = operationResult;
+                        afterEqual = true;
+                        break;
+
+                    case 'negate':
+                        if (firstNumber == displayedNumber.textContent) {
+                            firstNumber = Number(-firstNumber);
+                        };
+                        displayedNumber.textContent = Number(-displayedNumber.textContent);
+                        break;
+                };
         };
     });
 });
