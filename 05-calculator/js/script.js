@@ -55,7 +55,7 @@ buttons.forEach((button) => {
                 if (displayedNumber.textContent.length < 10) {
                     const buttonValue = e.target.value;
                     parsedNumber = displayedNumber.textContent.concat(buttonValue);
-                    parsedNumber = parseInt(parsedNumber).toString();
+                    parsedNumber = Number(parsedNumber).toString();
                     displayedNumber.textContent = parsedNumber;
                 };
                 break;
@@ -131,6 +131,23 @@ buttons.forEach((button) => {
                         };
                         displayedNumber.textContent = Number(-displayedNumber.textContent);
                         break;
+
+                    case 'delete':
+                        let correctedText;
+                        if (displayedNumber.textContent.length > 1) {
+                            correctedText = displayedNumber.textContent.slice(0, -1);
+                        } else {
+                            correctedText = "0";
+                        };
+                        if (firstNumber == displayedNumber.textContent) {
+                            firstNumber = correctedText;
+                        };
+                        displayedNumber.textContent = correctedText;
+                        break;
+
+                    case 'decimal':
+                        displayedNumber.textContent = displayedNumber.textContent.concat('.');
+                        break
                 };
         };
     });

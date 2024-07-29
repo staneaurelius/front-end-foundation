@@ -84,3 +84,11 @@ button {
     color: #FF9500;
     background-color: #D4D4D2;
 }
+
+/* Footer */
+.footer {
+    margin-top: 64px;
+    font-size: 18px;
+    font-style: italic;
+    text-align: center;
+}
